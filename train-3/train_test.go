@@ -87,12 +87,12 @@ func expectSpeed(t *testing.T, speeder Speeder, speed int) {
 func TestEngine(t *testing.T) {
 	e := NewEngine()
 	go e.Run()
+	defer e.Stop()
 	expectSpeed(t, e, 0)
 	e.Accel()
 	expectSpeed(t, e, 10)
 	e.Decel()
 	expectSpeed(t, e, 0)
-	e.Stop()
 }
 
 func TestEngineAccel(t *testing.T) {
