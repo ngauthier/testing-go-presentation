@@ -104,11 +104,11 @@ func TestEngineAccel(t *testing.T) {
 		close(done)
 	}()
 
-	i, ok := <-e.accelcmd
-	if i == nil || !ok {
+	c, ok := <-e.accelcmd
+	if c == nil || !ok {
 		t.Fatal("expected acceleration command")
 	}
 
-	close(i.done)
+	close(c.done)
 	<-done
 }
